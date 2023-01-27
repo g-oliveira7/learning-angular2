@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { CursosService } from './../cursos.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CursosService } from './../cursos.service';
   templateUrl: './curso-detalhe.component.html',
   styleUrls: ['./curso-detalhe.component.scss']
 })
-export class CursoDetalheComponent implements OnDestroy {
+export class CursoDetalheComponent implements OnInit, OnDestroy {
 
   idCurso: number = 0;
   inscricaoId: Subscription;
@@ -19,10 +19,15 @@ export class CursoDetalheComponent implements OnDestroy {
     private route: ActivatedRoute,
     private cursosService: CursosService
   ) {
-    this.inscricaoId = this.route.params.pipe()
-      .subscribe(params => this.idCurso = <number>params['id'])
+    this.inscricaoId = new Subscription()
+  }
 
-    this.curso = this.cursosService.getCurso(this.idCurso)
+  ngOnInit(): void {
+    this.inscricaoId = this.route.params
+      .subscribe(params => {        
+        this.idCurso = params['id']
+        this.curso = this.cursosService.getCurso(this.idCurso)
+      })
   }
 
   ngOnDestroy(): void {
