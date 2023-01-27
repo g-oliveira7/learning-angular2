@@ -1,10 +1,16 @@
-<h3>Course Detail</h3>
+<mat-card>
+    <mat-card-header>
+        <h3>Course Detail</h3>
+    </mat-card-header>
 
-<div *ngIf="curso != null; else naoEncontrado">
-    <p>Id: {{ curso?.id }}</p>
-    <p>Nome: {{ curso?.nome }}</p>
-</div>
-
-<ng-template #naoEncontrado>
-    <p>Curso não encontrado</p>
-</ng-template>
+    <mat-card-content>
+        <div *ngIf="curso != null; else naoEncontrado">
+            <p>Id: {{ curso?.id }}</p>
+            <p>Nome: {{ curso?.nome }}</p>
+        </div>
+        
+        <ng-template #naoEncontrado>
+            <p>Curso não encontrado</p>
+        </ng-template>
+    </mat-card-content>
+</mat-card>

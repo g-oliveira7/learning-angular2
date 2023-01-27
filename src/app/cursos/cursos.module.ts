@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list'
+import { MatCardModule } from '@angular/material/card';
 
 import { CursosComponent } from './cursos.component';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
@@ -12,6 +14,8 @@ import { CursosRoutingModule } from './cursos.routing.module';
   ],
   imports: [
     CommonModule,
+    MatListModule,
+    MatCardModule,
     CursosRoutingModule
   ]
 })

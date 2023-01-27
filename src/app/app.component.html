@@ -1,12 +1,9 @@
 <nav>
-  <div>
-    <a routerLink="/">Logo</a>
+  <mat-toolbar color="primary">
+    <span><a mat-button routerLink="/">Logo</a></span>
 
-    <ul>
-      <li><a routerLink="/">home</a></li>
-      <li><a routerLink="/cursos" [queryParams]="{pagina: 1}">cursos</a></li>
-    </ul>
-  </div>
+    <button mat-button routerLink="/cursos" [queryParams]="{ pagina: 1 }">Cursos</button>
+  </mat-toolbar>
 </nav>
 
 <router-outlet></router-outlet>

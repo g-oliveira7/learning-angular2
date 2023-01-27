@@ -2,11 +2,12 @@
     <h2>Courses list</h2>
 
     <p>Página: {{ pagina }}</p>
-    <ul>
-        <li *ngFor="let curso of cursos">
-            <a [routerLink]="[curso?.id]">{{ curso?.nome }}</a>
-        </li>
-    </ul>
+
+    <mat-selection-list multiple="false">
+        <mat-list-option *ngFor="let curso of cursos" [routerLink]="[curso?.id]">
+            {{ curso?.nome }}
+        </mat-list-option>
+    </mat-selection-list>
 
     <router-outlet></router-outlet>
 </section>
