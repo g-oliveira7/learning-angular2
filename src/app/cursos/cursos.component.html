@@ -1,1 +1,9 @@
-<p>cursos works!</p>
+<section>
+    <h2>Courses list</h2>
+
+    <ul>
+        <li *ngFor="let curso of cursos">
+            <a [routerLink]="['/cursos', curso?.id]">{{ curso?.nome }}</a>
+        </li>
+    </ul>
+</section>

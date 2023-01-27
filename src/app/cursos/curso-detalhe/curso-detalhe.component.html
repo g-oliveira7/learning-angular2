@@ -1,1 +1,10 @@
-<p>curso-detalhe works!</p>
+<h3>Course Detail</h3>
+
+<div *ngIf="curso != null; else naoEncontrado">
+    <p>Id: {{ curso?.id }}</p>
+    <p>Nome: {{ curso?.nome }}</p>
+</div>
+
+<ng-template #naoEncontrado>
+    <p>Curso não encontrado</p>
+</ng-template>
