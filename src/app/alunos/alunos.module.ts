@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
+import { AlunosService } from './alunos.service';
 import { AlunosComponent } from './alunos.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { AlunoEditComponent } from './aluno-edit/aluno-edit.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunosRoutingModule } from './alunos.routing.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +24,13 @@ import { AlunosRoutingModule } from './alunos.routing.module';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    MatListModule,
+    MatCardModule,
+    MatButtonModule,
+    MatInputModule,
     AlunosRoutingModule
-  ]
+  ],
+  providers: [AlunosService]
 })
 export class AlunosModule { }

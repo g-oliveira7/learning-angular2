@@ -1,1 +1,19 @@
-<p>aluno-detalhe works!</p>
+<mat-card>
+    <mat-card-header>
+        <h3>Student Detail</h3>
+    </mat-card-header>
+
+    <mat-card-content>
+        <div *ngIf="aluno != null; else naoEncontrado">
+            <p>Id: {{ aluno?.id }}</p>
+            <p>Nome: {{ aluno?.nome }}</p>
+            <p>E-mail: {{ aluno?.email }}</p>
+
+            <button mat-raised-button color="primary" (click)="editarAluno()">Editar</button>
+        </div>
+        
+        <ng-template #naoEncontrado>
+            <p>Aluno não encontrado</p>
+        </ng-template>
+    </mat-card-content>
+</mat-card>
