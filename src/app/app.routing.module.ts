@@ -13,6 +13,10 @@ const appRoutes: Routes = [
         path: 'alunos', 
         loadChildren: () => import('./alunos/alunos.module').then(m => m.AlunosModule) 
     },
+    { 
+        path: 'login', 
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    },
 ]
 
 @NgModule({
