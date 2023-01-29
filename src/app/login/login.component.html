@@ -2,15 +2,15 @@
     <p>
         <mat-form-field>
             <mat-label>Usuário</mat-label>
-            <input matInput #username>
+            <input matInput [(ngModel)]="credenciais.username">
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
             <mat-label>Senha</mat-label>
-            <input matInput type="password" #password>
+            <input matInput [(ngModel)]="credenciais.password" type="password">
         </mat-form-field>
     </p>
 
-    <button mat-raised-button (click)="autenticar(username.value, password.value)">Enter</button>
+    <button mat-raised-button (click)="logar()">Enter</button>
 </div>

@@ -1,3 +1,5 @@
+import { AuthService } from './auth.service';
+import { Credentials } from './credentials';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,7 +9,13 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  autenticar(username: string, password: string) {
-    console.log(`{ username: ${username}, password: ${password} }`);
+  credenciais: Credentials;
+
+  constructor(private authService: AuthService) {
+    this.credenciais = new Credentials()
+  }
+
+  logar() {
+    this.authService.logar(this.credenciais)
   }
 }

@@ -1,11 +1,2 @@
-<nav>
-  <mat-toolbar color="primary">
-    <span routerLink="/">Logo</span>
-
-    <button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/cursos" [queryParams]="{ pagina: 1 }">Cursos</button>
-    <button mat-button routerLink="/alunos">Alunos</button>
-  </mat-toolbar>
-</nav>
-
+<app-navbar *ngIf="mostrarMenu"></app-navbar>
 <router-outlet></router-outlet>
