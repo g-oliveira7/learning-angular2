@@ -9,7 +9,7 @@ import { Credentials } from './credentials';
 export class AuthService {
 
   private authCredentials: Credentials;
-
+  private usuarioAutenticado: boolean = false;
 
   mostrarMenuEvent = new EventEmitter<boolean>();
 
@@ -21,11 +21,17 @@ export class AuthService {
 
   logar(creds: Credentials) {
     if (this.autenticado(creds)) {
+      this.usuarioAutenticado = true;
       this.mostrarMenuEvent.emit(true);
       this.router.navigate(['/'])
     } else {
+      this.usuarioAutenticado = false;
       this.mostrarMenuEvent.emit(false);
     }
+  }
+
+  usuarioEstaAutenticado(): boolean {
+    return this.usuarioAutenticado
   }
 
   private autenticado(creds: Credentials): boolean {
