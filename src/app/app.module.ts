@@ -9,13 +9,15 @@ import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,
