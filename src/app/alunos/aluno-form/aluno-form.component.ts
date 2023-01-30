@@ -19,7 +19,6 @@ export class AlunoFormComponent {
   constructor(
     private alunosService: AlunosService,
     private router: Router,
-    private confirmationService: ConfirmationService
   ) { }
 
   salvar() {

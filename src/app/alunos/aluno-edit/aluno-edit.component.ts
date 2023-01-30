@@ -5,6 +5,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ConfirmationService } from './../../components/confirmation/confirmation.service';
 import { IFormCanDeactivate } from './../../guards/iform-candeactivate';
+import { Aluno } from '../aluno';
 
 @Component({
   selector: 'app-aluno-edit',
@@ -13,8 +14,7 @@ import { IFormCanDeactivate } from './../../guards/iform-candeactivate';
 })
 export class AlunoEditComponent implements OnInit, OnDestroy, IFormCanDeactivate {
 
-  idAluno: number = 0;
-  aluno: any;
+  aluno: Aluno;
   inscricaoId: Subscription;
   mudouForm: boolean = false;
 
@@ -25,13 +25,13 @@ export class AlunoEditComponent implements OnInit, OnDestroy, IFormCanDeactivate
     private confirmationService: ConfirmationService
   ) {
     this.inscricaoId = new Subscription();
+    this.aluno = { id: NaN, nome: '', email: ''};
   }
 
   ngOnInit(): void {
-    this.inscricaoId = this.route.params.subscribe(params => {
-      this.idAluno = params['id']
-      this.aluno = this.alunosService.getAluno(this.idAluno);
-    })
+    this.inscricaoId = this.route.data.subscribe(data => {
+      this.aluno = data['aluno'];
+    });
   }
 
   ngOnDestroy(): void {
@@ -40,7 +40,7 @@ export class AlunoEditComponent implements OnInit, OnDestroy, IFormCanDeactivate
 
   salvar() {
     this.alunosService.updateAluno(this.aluno);
-    this.router.navigate(['/alunos', this.idAluno])
+    this.router.navigate(['/alunos', this.aluno.id]);
   }
 
   onInput() {

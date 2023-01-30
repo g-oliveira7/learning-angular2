@@ -11,7 +11,6 @@ import { Aluno } from '../aluno';
 })
 export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
-  idAluno: number = 0;
   inscricaoId: Subscription;
   aluno: Aluno;
 
@@ -35,6 +34,6 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   }
 
   editarAluno() {
-    this.router.navigate(['/alunos', this.idAluno, 'editar']);
+    this.router.navigate(['/alunos', this.aluno.id, 'editar']);
   }
 }

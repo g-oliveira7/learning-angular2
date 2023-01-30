@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AlunoEditResolver } from '../guards/aluno-edit.resolver';
 import { AlunoDetalheResolver } from './../guards/aluno-detalhe.resover';
 import { AlunosComponent } from './alunos.component';
 import { AlunoFormDeactivate } from './../guards/alunoform-deactivate';
@@ -22,7 +23,10 @@ const alunosRoutes: Routes = [
                 path: ':id', component: AlunoDetalheComponent,
                 resolve: { aluno: AlunoDetalheResolver }
             },
-            { path: ':id/editar', component: AlunoEditComponent },
+            { 
+                path: ':id/editar', component: AlunoEditComponent,
+                resolve: { aluno: AlunoEditResolver}
+            },
         ]
     }
 ]
