@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
-import { AlunosService } from './../alunos.service';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
+import { AlunosService } from './../alunos.service';
+import { ConfirmationService } from './../../components/confirmation/confirmation.service';
 import { IFormCanDeactivate } from './../../guards/iform-candeactivate';
 
 @Component({
@@ -16,7 +18,8 @@ export class AlunoFormComponent implements IFormCanDeactivate {
 
   constructor(
     private alunosService: AlunosService,
-    private router: Router
+    private router: Router,
+    private confirmationService: ConfirmationService
   ) { }
 
   salvar() {
@@ -30,7 +33,10 @@ export class AlunoFormComponent implements IFormCanDeactivate {
     }
   }
 
-  podeDesativar(): boolean {
-    return !this.formMudou;
+  podeDesativar(): Observable<boolean> | true {
+    if (this.formMudou) {
+      return this.confirmationService.open('Are you sure? Will not save your changes...')
+    }
+    return true
   }
 }

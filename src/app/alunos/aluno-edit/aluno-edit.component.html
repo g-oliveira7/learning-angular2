@@ -7,19 +7,19 @@
         <p>
             <mat-form-field>
                 <mat-label>ID</mat-label>
-                <input matInput [(ngModel)]="aluno.id" disabled>
+                <input matInput [(ngModel)]="aluno.id" disabled (input)="onInput()">
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>Nome</mat-label>
-                <input matInput [(ngModel)]="aluno.nome">
+                <input matInput [(ngModel)]="aluno.nome" (input)="onInput()">
             </mat-form-field>
         </p>
         <p>
         <mat-form-field>
             <mat-label>E-mail</mat-label>
-            <input matInput [(ngModel)]="aluno.email">
+            <input matInput [(ngModel)]="aluno.email" (input)="onInput()">
         </mat-form-field>
         </p>
 

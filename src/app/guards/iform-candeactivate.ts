@@ -1,4 +1,6 @@
+import { Observable } from 'rxjs';
+
 export interface IFormCanDeactivate {
 
-    podeDesativar(): boolean;
+    podeDesativar(): Observable<boolean> | true;
 }
