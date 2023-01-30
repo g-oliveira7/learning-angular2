@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { createUrlTreeFromSnapshot, Router } from '@angular/router';
 import { EventEmitter, Injectable } from '@angular/core';
 
 import { Credentials } from './credentials';
@@ -8,15 +8,12 @@ import { Credentials } from './credentials';
 })
 export class AuthService {
 
-  private authCredentials: Credentials;
   private usuarioAutenticado: boolean = false;
+  private usuarioLogado: any;
 
   mostrarMenuEvent = new EventEmitter<boolean>();
 
   constructor(private router: Router) {
-    this.authCredentials = new Credentials()
-    this.authCredentials.username = 'admin'
-    this.authCredentials.password = 'admin'
   }
 
   logar(creds: Credentials) {
@@ -34,8 +31,27 @@ export class AuthService {
     return this.usuarioAutenticado
   }
 
+  getUsuarioLogado(): any {
+    return this.usuarioLogado
+  }
+
   private autenticado(creds: Credentials): boolean {
-    return this.authCredentials.username.toLocaleLowerCase() == creds.username.toLocaleLowerCase() &&
-    this.authCredentials.password == creds.password
+    const usuarios = this.usuarios()
+
+    for (let i = 0; i < usuarios.length; i++) {
+      if (usuarios[i].username == creds.username &&
+        usuarios[i].password == creds.password) {
+        this.usuarioLogado = usuarios[i];
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private usuarios() {
+    return [
+      { username: 'admin', password: 'admin', role: 'admin' },
+      { username: 'client', password: '1234', role: 'normal' },
+    ]
   }
 }

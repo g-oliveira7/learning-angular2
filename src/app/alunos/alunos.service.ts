@@ -26,6 +26,11 @@ export class AlunosService {
         return null;
     }
 
+    novoAluno(nome: string, email: string) {
+        const qntAlunos = this.alunos.length
+        const ultimoId = this.alunos[qntAlunos - 1].id
+    }
+
     updateAluno(aluno: any) {
         if (aluno.id != null) {
             for (let i = 0; i < this.alunos.length; i++) {
