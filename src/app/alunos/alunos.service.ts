@@ -29,6 +29,12 @@ export class AlunosService {
     novoAluno(nome: string, email: string) {
         const qntAlunos = this.alunos.length
         const ultimoId = this.alunos[qntAlunos - 1].id
+        
+        this.alunos.push({
+            id: ultimoId + 1,
+            nome: nome,
+            email: email
+        })
     }
 
     updateAluno(aluno: any) {

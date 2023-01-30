@@ -1,1 +1,22 @@
-<p>aluno-form works!</p>
+<mat-card>
+    <mat-card-header>
+        <h3>New student</h3>
+    </mat-card-header>
+
+    <mat-card-content>
+        <p>
+            <mat-form-field>
+                <mat-label>Nome</mat-label>
+                <input matInput [(ngModel)]="aluno.nome">
+            </mat-form-field>
+        </p>
+        <p>
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="aluno.email">
+        </mat-form-field>
+        </p>
+
+        <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+    </mat-card-content>
+</mat-card>

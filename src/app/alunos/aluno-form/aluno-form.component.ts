@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AlunosService } from './../alunos.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AlunoFormComponent {
 
+  aluno = {nome: '', email: ''}
+
+  constructor(
+    private alunosService: AlunosService,
+    private router: Router
+  ) { }
+
+  salvar() {
+    this.alunosService.novoAluno(this.aluno.nome, this.aluno.email);
+    this.router.navigate(['/alunos'])
+  }
 }
