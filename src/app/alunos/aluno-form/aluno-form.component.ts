@@ -11,7 +11,7 @@ import { IFormCanDeactivate } from './../../guards/iform-candeactivate';
   templateUrl: './aluno-form.component.html',
   styleUrls: ['./aluno-form.component.scss']
 })
-export class AlunoFormComponent implements IFormCanDeactivate {
+export class AlunoFormComponent {
 
   private formMudou: boolean = false;
   aluno = { nome: '', email: '' }
@@ -31,12 +31,5 @@ export class AlunoFormComponent implements IFormCanDeactivate {
     if (!this.formMudou) {
       this.formMudou = true
     }
-  }
-
-  podeDesativar(): Observable<boolean> | true {
-    if (this.formMudou) {
-      return this.confirmationService.open('Are you sure? Will not save your changes...')
-    }
-    return true
   }
 }
