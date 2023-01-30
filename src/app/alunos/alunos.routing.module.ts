@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AlunoEditResolver } from '../guards/aluno-edit.resolver';
-import { AlunoDetalheResolver } from './../guards/aluno-detalhe.resover';
+import { AlunoByIdResolver } from '../guards/aluno-by-id.resolver';
 import { AlunosComponent } from './alunos.component';
 import { AlunoFormDeactivate } from './../guards/alunoform-deactivate';
 import { AlunosGuard } from './../guards/alunos.guard';
@@ -16,16 +15,16 @@ const alunosRoutes: Routes = [
         canActivateChild: [AlunosGuard],
         children: [
             { 
-                path: 'novo', component: AlunoFormComponent, 
-                canDeactivate: [AlunoFormDeactivate]
+                path: 'novo', component: AlunoFormComponent
             },
             { 
                 path: ':id', component: AlunoDetalheComponent,
-                resolve: { aluno: AlunoDetalheResolver }
+                resolve: { aluno: AlunoByIdResolver }
             },
             { 
                 path: ':id/editar', component: AlunoEditComponent,
-                resolve: { aluno: AlunoEditResolver}
+                canDeactivate: [AlunoFormDeactivate],
+                resolve: { aluno: AlunoByIdResolver }
             },
         ]
     }

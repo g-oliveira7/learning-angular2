@@ -5,8 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
-import { AlunoEditResolver } from '../guards/aluno-edit.resolver';
-import { AlunoDetalheResolver } from '../guards/aluno-detalhe.resover';
+import { AlunoByIdResolver } from '../guards/aluno-by-id.resolver';
 import { AlunoFormDeactivate } from './../guards/alunoform-deactivate';
 import { AlunosGuard } from './../guards/alunos.guard';
 import { AlunosService } from './alunos.service';
@@ -39,8 +38,7 @@ import { FormsModule } from '@angular/forms';
     AlunosService,
     AlunosGuard,
     AlunoFormDeactivate,
-    AlunoDetalheResolver,
-    AlunoEditResolver
+    AlunoByIdResolver,
   ]
 })
 export class AlunosModule { }

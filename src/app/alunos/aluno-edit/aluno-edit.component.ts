@@ -51,7 +51,7 @@ export class AlunoEditComponent implements OnInit, OnDestroy, IFormCanDeactivate
 
   podeDesativar(): Observable<boolean> | true {
     if (this.mudouForm) {
-      return this.confirmationService.open('Are you sure? Will not save your changes...')
+      return this.confirmationService.open('Are sure you want edit this?')
     }
     return true
   }
