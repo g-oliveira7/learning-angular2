@@ -6,7 +6,11 @@ import { AuthGuard } from './guards/auth.guard.';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { 
+        path: 'home', component: HomeComponent, 
+        canActivate: [AuthGuard] 
+    },
     { 
         path: 'cursos', 
         loadChildren: () => import('./cursos/cursos.module').then(m => m.CursosModule),
