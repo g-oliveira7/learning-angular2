@@ -1,7 +1,8 @@
-import { AlunosComponent } from './alunos.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AlunoDetalheResolver } from './../guards/aluno-detalhe.resover';
+import { AlunosComponent } from './alunos.component';
 import { AlunoFormDeactivate } from './../guards/alunoform-deactivate';
 import { AlunosGuard } from './../guards/alunos.guard';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
@@ -17,7 +18,10 @@ const alunosRoutes: Routes = [
                 path: 'novo', component: AlunoFormComponent, 
                 canDeactivate: [AlunoFormDeactivate]
             },
-            { path: ':id', component: AlunoDetalheComponent },
+            { 
+                path: ':id', component: AlunoDetalheComponent,
+                resolve: { aluno: AlunoDetalheResolver }
+            },
             { path: ':id/editar', component: AlunoEditComponent },
         ]
     }

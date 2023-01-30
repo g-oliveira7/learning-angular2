@@ -5,9 +5,9 @@
 
     <mat-card-content>
         <div *ngIf="aluno != null; else naoEncontrado">
-            <p>Id: {{ aluno?.id }}</p>
-            <p>Nome: {{ aluno?.nome }}</p>
-            <p>E-mail: {{ aluno?.email }}</p>
+            <p>Id: {{ aluno.id }}</p>
+            <p>Nome: {{ aluno.nome }}</p>
+            <p>E-mail: {{ aluno.email }}</p>
 
             <button mat-raised-button color="primary" (click)="editarAluno()">Editar</button>
         </div>

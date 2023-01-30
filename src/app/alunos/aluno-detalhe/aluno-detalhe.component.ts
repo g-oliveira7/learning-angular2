@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { AlunosService } from './../alunos.service';
+import { Aluno } from '../aluno';
 
 @Component({
   selector: 'app-aluno-detalhe',
@@ -13,22 +13,21 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
 
   idAluno: number = 0;
   inscricaoId: Subscription;
-  aluno: any
+  aluno: Aluno;
 
   constructor(
-    private alunosService: AlunosService,
     private route: ActivatedRoute,
     private router: Router
   ) {
     this.inscricaoId = new Subscription();
+    this.aluno = { id: NaN, nome: '', email: ''};
   }
 
   ngOnInit(): void {
-    this.inscricaoId = this.route.params
-      .subscribe(params => {
-        this.idAluno = params['id']
-        this.aluno = this.alunosService.getAluno(this.idAluno);
-      })
+    this.inscricaoId = this.route.data
+      .subscribe(data => {
+        this.aluno = data['aluno'];
+      });
   }
 
   ngOnDestroy(): void {
@@ -36,6 +35,6 @@ export class AlunoDetalheComponent implements OnInit, OnDestroy {
   }
 
   editarAluno() {
-    this.router.navigate(['/alunos', this.idAluno, 'editar'])
+    this.router.navigate(['/alunos', this.idAluno, 'editar']);
   }
 }
