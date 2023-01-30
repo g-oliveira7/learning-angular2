@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+import { AlunoFormDeactivate } from './../guards/alunoform-deactivate';
 import { AlunosGuard } from './../guards/alunos.guard';
 import { AlunosService } from './alunos.service';
 import { AlunosComponent } from './alunos.component';
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
   providers: [
     AlunosService,
     AlunosGuard,
+    AlunoFormDeactivate
   ]
 })
 export class AlunosModule { }
